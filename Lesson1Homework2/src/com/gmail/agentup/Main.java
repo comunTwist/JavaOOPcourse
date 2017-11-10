@@ -8,9 +8,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		Triangle areaOne = new Triangle();
-		areaOne.setA(4);
-		areaOne.setB(5);
-		areaOne.setC(6);
+		areaOne.setA(2);
+		areaOne.setB(2);
+		areaOne.setC(2.8);
 		System.out.println("Area one: " + areaOne.triangleArea());
 
 		Triangle areaTwo = new Triangle();
