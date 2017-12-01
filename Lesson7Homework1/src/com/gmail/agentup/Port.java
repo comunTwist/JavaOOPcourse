@@ -15,8 +15,8 @@ public class Port implements Runnable {
 	@Override
 	public void run() {
 		for (; !dock.isStop();) {
-			System.out.println("Send " + dock.getValue());
-			// dock.getValue();
+			System.out.println("Accepted: <- " + dock.getValue());
+			//dock.getValue();
 		}
 	}
 }

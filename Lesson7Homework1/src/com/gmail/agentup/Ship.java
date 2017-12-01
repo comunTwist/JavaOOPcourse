@@ -42,14 +42,15 @@ public class Ship implements Runnable {
 
 	@Override
 	public void run() {
-		int place = dock.craneReserve(true);
+		// int place = dock.craneReserve(true);
 		for (int i = 1; i <= cargoCount; i++) {
-			dock.setValue("box " + i + ": " + cargoTitle);
+			dock.setValue(i + " " + cargoTitle);
+			System.out.println("Sent box: -> " + i + " " + cargoTitle);
 		}
-		boolean tmp[] = dock.getReserve();
-		tmp[place] = false;
-		dock.setReserve(tmp);
-		 //dock.setStop(true);
+		// boolean tmp[] = dock.getReserve();
+		// tmp[place] = false;
+		// dock.setReserve(tmp);
+		// dock.setStop(true);
 
 	}
 }

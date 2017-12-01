@@ -6,26 +6,31 @@
 
 package com.gmail.agentup;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Main {
 
 	public static void main(String[] args) {
-		Dock dock = new Dock();
-		Ship shipOne = new Ship(dock, 10, "Black");
-		Ship shipTwo = new Ship(dock, 10, "White");
-		Ship shipThree = new Ship(dock, 10, "Yellow");
+		Dock dock = new Dock(500);
+		Ship shipOne = new Ship(dock, 11, "Puer");
+		Ship shipTwo = new Ship(dock, 9, "Chesterfield");
+		Ship shipThree = new Ship(dock, 10, "Black Jack");
 		Port port = new Port(dock);
-		
+
 		Thread tharedShipOne = new Thread(shipOne);
 		Thread tharedShipTwo = new Thread(shipTwo);
 		Thread tharedShipThree = new Thread(shipThree);
 		Thread tharedPort = new Thread(port);
+
 		
-		tharedShipOne.start();
-		//tharedShipTwo.start();
-		//tharedShipThree.start();
+		ExecutorService exSer = Executors.newFixedThreadPool(2);
+		exSer.submit(tharedShipOne);
+		exSer.submit(tharedShipTwo);
+		exSer.submit(tharedShipThree);
 		tharedPort.start();
-		//System.out.println("jjk");
-		
+		exSer.shutdown();
+
 	}
 
 }

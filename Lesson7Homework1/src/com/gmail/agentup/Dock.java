@@ -1,16 +1,15 @@
 package com.gmail.agentup;
 
 public class Dock {
-	private int craneCount;
-	private boolean[] reserve = new boolean[craneCount];
+
+	// private boolean[] reserve = new boolean[3];
 	private int speed;
 	private String value;
 	private boolean turn = false;
 	private boolean stop = false;
 
-	public Dock(int craneCount, int speed) {
+	public Dock(int speed) {
 		super();
-		this.craneCount = craneCount;
 		this.speed = speed;
 	}
 
@@ -18,21 +17,13 @@ public class Dock {
 		super();
 	}
 
-	public boolean[] getReserve() {
-		return reserve;
-	}
-
-	public void setReserve(boolean[] reserve) {
-		this.reserve = reserve;
-	}
-
-	public int getCraneCount() {
-		return craneCount;
-	}
-
-	public void setCraneCount(int craneCount) {
-		this.craneCount = craneCount;
-	}
+	// public boolean[] getReserve() {
+	// return reserve;
+	// }
+	//
+	// public void setReserve(boolean[] reserve) {
+	// this.reserve = reserve;
+	// }
 
 	public double getSpeed() {
 		return speed;
@@ -42,26 +33,32 @@ public class Dock {
 		this.speed = speed;
 	}
 
-	public synchronized int craneReserve(boolean reserve) {
-		int id = -1;
-		while (id < 0) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-			}
-			for (int i = 0; i < this.reserve.length; i++) {
-				if (this.reserve[i] == false) {
-					this.reserve[i] = true;
-					id = i;
-					break;
-				}
-			}
-		}
-		notifyAll();
-		return id;
-	}
+	// public synchronized int craneReserve(boolean reserve) {
+	// int id = -1;
+	// while (id < 0) {
+	// try {
+	// wait();
+	// } catch (InterruptedException e) {
+	// }
+	// for (int i = 0; i < this.reserve.length; i++) {
+	// if (this.reserve[i] == false) {
+	// this.reserve[i] = true;
+	// id = i;
+	// break;
+	// }
+	// }
+	// }
+	// notifyAll();
+	// return id;
+	// }
 
 	public synchronized String getValue() {
+		try {
+			Thread.sleep(speed / 2);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		for (; turn == false;) {
 			try {
 				wait();
@@ -71,11 +68,16 @@ public class Dock {
 		String tmp = this.value;
 		turn = false;
 		notifyAll();
-		System.out.println("Accepted " + this.value);
+		// System.out.println("Accepted " + this.value);
 		return tmp;
 	}
 
 	public synchronized void setValue(String value) {
+		try {
+			Thread.sleep(speed / 2);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		for (; turn == true;) {
 			try {
 				wait();
@@ -84,7 +86,7 @@ public class Dock {
 		}
 		this.value = value;
 		turn = true;
-		//System.out.println("Send " + this.value);
+		// System.out.println("Send " + this.value);
 		notifyAll();
 	}
 
