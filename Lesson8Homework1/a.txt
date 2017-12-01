@@ -1,0 +1,8 @@
+Student [name=Artur, surname=Balozian, sex=m, age=21, faculty=pedagogue, record=1002, course=3, performance=10]
+Student [name=Boris, surname=Hodeev, sex=m, age=24, faculty=biology, record=1003, course=4, performance=7]
+Student [name=Iggy, surname=Pop, sex=m, age=23, faculty=physics, record=1004, course=4, performance=5]
+Student [name=Kate, surname=Svetska, sex=w, age=19, faculty=biology, record=1001, course=1, performance=9]
+Student [name=Maria, surname=De Grazzia, sex=w, age=23, faculty=engineer, record=1005, course=4, performance=7]
+Student [name=Sam, surname=Pinkblock, sex=m, age=26, faculty=biology, record=1000, course=4, performance=8]
+Student [name=Tonia, surname=Peeva, sex=w, age=19, faculty=engineer, record=1006, course=1, performance=9]
+Student [name=Vlad, surname=Grin, sex=m, age=17, faculty=lawyer, record=1007, course=1, performance=4]
